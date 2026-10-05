@@ -1,1 +1,1 @@
-pip install flask
+https://github.com/Arsene-Faly/gestion_ecole
