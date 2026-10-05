@@ -1,0 +1,65 @@
+# # Environnement virtuel Python
+
+# venv/
+# .venv/
+# env/
+# ENV/
+
+# # Cache Python
+
+# **pycache**/
+# *.py[cod]
+# *$py.class
+
+# # Fichiers de configuration locaux
+
+# .env
+# .env.*
+# !.env.example
+
+# # Base de données locale
+
+# *.db
+# *.sqlite
+# *.sqlite3
+
+# # Logs
+
+# *.log
+
+# # IDE / éditeurs
+
+# .vscode/
+# .idea/
+
+# # Système
+
+# .DS_Store
+# Thumbs.db
+
+# # Tests / couverture
+
+# .pytest_cache/
+# .coverage
+# htmlcov/
+
+# # Flask
+
+# instance/
+
+# # Fichiers temporaires
+
+# *.tmp
+# *.temp
+
+# # Build / distribution
+
+# build/
+# dist/
+# *.egg-info/
+# .eggs/
+# pip-wheel-metadata/
+
+# # Jupyter
+
+# .ipynb_checkpoints/

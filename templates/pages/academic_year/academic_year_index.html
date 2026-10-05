@@ -1,0 +1,113 @@
+{% extends "layouts/base.html" %} {% block titre %}Années scolaires{% endblock
+%} {% block titre_header %}Années scolaires{% endblock %} {% block content %}
+
+<section class="section">
+  {# ========================================== MESSAGES FLASH
+  ========================================== #} {% with messages =
+  get_flashed_messages(with_categories=true) %} {% if messages %}
+
+  <div class="flash-messages">
+    {% for category, message in messages %}
+
+    <div class="flash flash-{{ category }}">{{ message }}</div>
+
+    {% endfor %}
+  </div>
+
+  {% endif %} {% endwith %}
+
+  <div class="card">
+    <div style="margin-bottom: 20px">
+      <h2 style="font-size: 1.1rem; margin-bottom: 5px">
+        Liste des années scolaires
+      </h2>
+
+      <p style="color: #777; font-size: 0.9rem">Gestion des années scolaires</p>
+
+      <a href="#" class="btn btn-secondary btn-sm"> Ajout Année Scolaire</a>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Année scolaire</th>
+            <th>Date de début</th>
+            <th>Date de fin</th>
+            <th>Statut</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {% for academic_year in academic_years %}
+
+          <tr>
+            <td>{{ loop.index }}</td>
+
+            <td>
+              <strong> {{ academic_year.name }} </strong>
+            </td>
+
+            <td>{{ academic_year.start_date.strftime("%d/%m/%Y") }}</td>
+
+            <td>{{ academic_year.end_date.strftime("%d/%m/%Y") }}</td>
+
+            <td>
+              {% if academic_year.is_active %}
+
+              <span class="badge ok"> Active </span>
+
+              {% else %}
+
+              <span class="badge danger"> Inactive </span>
+
+              {% endif %}
+            </td>
+
+            <td class="actions">
+              <a href="#" class="btn btn-secondary btn-sm"> Voir </a>
+
+              <a href="#" class="btn btn-secondary btn-sm"> Modifier </a>
+
+              <a href="#" class="btn btn-danger btn-sm"> Supprimer </a>
+
+              {% if academic_year.is_active %}
+
+              <button type="button" class="btn btn-warning btn-sm" disabled>
+                Active
+              </button>
+
+              {% else %}
+
+              <a
+                href="{{ url_for(
+                                        'academic_year.academic_year_activate',
+                                        academic_year_id=academic_year.id
+                                    ) }}"
+                class="btn btn-success btn-sm"
+              >
+                Activer
+              </a>
+
+              {% endif %}
+            </td>
+          </tr>
+
+          {% else %}
+
+          <tr>
+            <td colspan="6" style="text-align: center; padding: 30px">
+              Aucune année scolaire enregistrée.
+            </td>
+          </tr>
+
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

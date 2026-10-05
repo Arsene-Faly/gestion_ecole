@@ -1,0 +1,153 @@
+{% extends "layouts/base.html" %}
+
+{% block titre %}Academic{% endblock  %}
+
+{% block titre_header %}Test{% endblock  %}
+
+{% block content %}
+<!-- Cartes statistiques -->
+      <section class="cards">
+        <article class="card stat">
+          <div class="label">Étudiants</div>
+          <div class="value">248</div>
+          <div class="note">12 inscrits ce mois-ci</div>
+        </article>
+        <article class="card stat gold">
+          <div class="label">Formateurs</div>
+          <div class="value">18</div>
+          <div class="note">2 en congé</div>
+        </article>
+        <article class="card stat green">
+          <div class="label">Cours actifs</div>
+          <div class="value">34</div>
+          <div class="note">Répartis sur 9 classes</div>
+        </article>
+        <article class="card stat red">
+          <div class="label">Moyenne générale</div>
+          <div class="value">12,4</div>
+          <div class="note">sur 20, en baisse de 0,3</div>
+        </article>
+      </section>
+
+      <!-- Tableau + activités -->
+      <section class="section two-cols">
+        <div>
+          <h2 style="font-size:1.1rem;margin-bottom:14px;">Derniers étudiants inscrits</h2>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Nom</th>
+                  <th>Classe</th>
+                  <th>Moyenne</th>
+                  <th>Statut</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Rakoto Jean</td>
+                  <td>L2 Informatique</td>
+                  <td>14,5</td>
+                  <td><span class="badge ok">Actif</span></td>
+                  <td class="actions"><a href="#" class="btn btn-secondary btn-sm">Modifier</a><a href="#"
+                      class="btn btn-danger btn-sm">Supprimer</a></td>
+                </tr>
+                <tr>
+                  <td>Rasoa Miora</td>
+                  <td>L1 Gestion</td>
+                  <td>11,0</td>
+                  <td><span class="badge warn">En attente</span></td>
+                  <td class="actions"><a href="#" class="btn btn-secondary btn-sm">Modifier</a><a href="#"
+                      class="btn btn-danger btn-sm">Supprimer</a></td>
+                </tr>
+                <tr>
+                  <td>Andry Fidy</td>
+                  <td>M1 Réseaux</td>
+                  <td>8,2</td>
+                  <td><span class="badge danger">Suspendu</span></td>
+                  <td class="actions"><a href="#" class="btn btn-secondary btn-sm">Modifier</a><a href="#"
+                      class="btn btn-danger btn-sm">Supprimer</a></td>
+                </tr>
+                <tr>
+                  <td>Hanta Voahangy</td>
+                  <td>L2 Informatique</td>
+                  <td>16,8</td>
+                  <td><span class="badge ok">Actif</span></td>
+                  <td class="actions"><a href="#" class="btn btn-secondary btn-sm">Modifier</a><a href="#"
+                      class="btn btn-danger btn-sm">Supprimer</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Activité récente</h3>
+          <ul class="list">
+            <li><span>Note saisie en Python</span><small>Il y a 1 h</small></li>
+            <li><span>Nouveau cours créé</span><small>Hier</small></li>
+            <li><span>Classe L2 mise à jour</span><small>Hier</small></li>
+            <li><span>Formateur ajouté</span><small>Lundi</small></li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Formulaire -->
+      <section class="section" id="form">
+        <h2>Ajouter un étudiant</h2>
+        <div class="card">
+          <form class="form" onsubmit="return false">
+            <div class="field">
+              <label for="nom">Nom complet</label>
+              <input id="nom" type="text" placeholder="Ex : Rakoto Jean">
+            </div>
+            <div class="field error">
+              <label for="email">Adresse e-mail</label>
+              <input id="email" type="email" value="rakoto@">
+              <span class="hint">Entrez une adresse complète, par exemple nom@domaine.mg</span>
+            </div>
+            <div class="field">
+              <label for="classe">Classe</label>
+              <select id="classe">
+                <option>L1 Gestion</option>
+                <option>L2 Informatique</option>
+                <option>M1 Réseaux</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="naissance">Date de naissance</label>
+              <input id="naissance" type="date">
+            </div>
+            <div class="field full">
+              <label for="adresse">Adresse</label>
+              <textarea id="adresse" placeholder="Quartier, ville"></textarea>
+            </div>
+            <div class="form-actions">
+              <button type="reset" class="btn btn-ghost">Annuler</button>
+              <button type="submit" class="btn btn-primary">Enregistrer l'étudiant</button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <!-- Catalogue de boutons -->
+      <section class="section">
+        <h2>Boutons disponibles</h2>
+        <div class="card">
+          <div class="btn-group" style="margin-bottom:14px;">
+            <button class="btn btn-primary">Principal</button>
+            <button class="btn btn-secondary">Secondaire</button>
+            <button class="btn btn-accent">Accent</button>
+            <button class="btn btn-danger">Supprimer</button>
+            <button class="btn btn-ghost">Discret</button>
+            <button class="btn btn-primary" disabled>Désactivé</button>
+          </div>
+          <div class="btn-group">
+            <button class="btn btn-primary btn-sm">Petit</button>
+            <button class="btn btn-primary">Moyen</button>
+            <button class="btn btn-primary btn-lg">Grand</button>
+          </div>
+        </div>
+      </section>
+{% endblock  %}
