@@ -31,7 +31,7 @@ class Level(db.Model):
     )
 
     # Ajout de ce champs après création table classe
-    classes = db.relationship(
+    classes = db.relationship(                                                                                   
         "SchoolClass",
         back_populates="level",
         cascade="all, delete-orphan"

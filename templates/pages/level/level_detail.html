@@ -1,0 +1,70 @@
+{% extends "layouts/base.html" %}
+
+{% block titre %}
+    {{ level.name }}
+{% endblock %}
+
+{% block titre_header %}
+    {{ level.name }}
+{% endblock %}
+
+{% block content %}
+
+<section class="section">
+
+    <div class="card">
+
+        <h3>{{ level.name }}</h3>
+
+        {% if level.description %}
+            <p>{{ level.description }}</p>
+        {% else %}
+            <p>Aucune description.</p>
+        {% endif %}
+
+    </div>
+
+
+    <div class="section">
+
+        <h2>
+            Classes de {{ level.name }}
+        </h2>
+
+        <div class="cards">
+
+            {% for school_class in level.classes %}
+
+            <div class="card">
+
+                <h3>
+                    {{ school_class.name }}
+                </h3>
+
+                <p>
+                    Niveau : {{ level.name }}
+                </p>
+
+            </div>
+
+            {% else %}
+
+            <div class="card">
+
+                <h3>Aucune classe</h3>
+
+                <p>
+                    Aucune classe n'est encore liée à ce niveau.
+                </p>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

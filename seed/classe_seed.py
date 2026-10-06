@@ -1,39 +1,6 @@
-Dans ton application de gestion scolaire, la classe sert à représenter un groupe d'élèves appartenant à un niveau scolaire.
-
-## AFFICHAGE SOUS FORME TABLEAU
-
-```py
-class SchoolClass(db.Model):
-
-    id = db.Column(
-        db.Integer,
-        primary_key=True
-    )
-
-    name = db.Column(
-        db.String(100),
-        nullable=False
-    )
-
-    level_id = db.Column(
-        db.Integer,
-        db.ForeignKey("levels.id"),
-        nullable=False
-    )
-
-    level = db.relationship(
-        "Level",
-        back_populates="classes"
-    )
-```
-
-
-## Seed Classe
-```py
 from app import app
 from config import db
 from models import Level, SchoolClass
-
 
 classes_by_level = {
     "Petite Section": ["A", "B"],
@@ -81,18 +48,3 @@ with app.app_context():
     db.session.commit()
 
     print("Classes créées avec succès.")
-```
-
-
-Resultat :
-Petite Section
-├── Petite Section A
-└── Petite Section B
-
-Moyenne Section
-├── Moyenne Section A
-└── Moyenne Section B
-
-Grande Section
-├── Grande Section A
-└── Grande Section B

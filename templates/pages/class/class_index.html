@@ -1,0 +1,121 @@
+{% extends "layouts/base.html" %}
+
+{% block titre %}Classes{% endblock %}
+
+{% block titre_header %}Classes{% endblock %}
+
+{% block content %}
+
+<section class="section">
+
+    <div class="card">
+
+        <div style="margin-bottom: 20px">
+
+            <h2 style="font-size: 1.1rem; margin-bottom: 5px">
+                Liste des classes
+            </h2>
+
+            <p style="color: #777; font-size: 0.9rem">
+                Gestion des classes scolaires
+            </p>
+
+            <a href="#" class="btn btn-secondary btn-sm">
+                Ajouter une classe
+            </a>
+
+        </div>
+
+        <div class="table-wrap">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>ID</th>
+                        <th>Classe</th>
+                        <th>Niveau</th>
+                        <th>Actions</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    {% for school_class in classes %}
+
+                    <tr>
+
+                        <td>
+                            {{ loop.index }}
+                        </td>
+
+                        <td>
+                            <strong>
+                                {{ school_class.name }}
+                            </strong>
+                        </td>
+
+                        <td>
+
+                            {% if school_class.level %}
+
+                                <span class="badge ok">
+                                    {{ school_class.level.name }}
+                                </span>
+
+                            {% else %}
+
+                                <span class="badge danger">
+                                    Aucun niveau
+                                </span>
+
+                            {% endif %}
+
+                        </td>
+
+                        <td class="actions">
+
+                            <a href="#" class="btn btn-secondary btn-sm">
+                                Voir
+                            </a>
+
+                            <a href="#" class="btn btn-secondary btn-sm">
+                                Modifier
+                            </a>
+
+                            <a href="#" class="btn btn-danger btn-sm">
+                                Supprimer
+                            </a>
+
+                        </td>
+
+                    </tr>
+
+                    {% else %}
+
+                    <tr>
+
+                        <td
+                            colspan="4"
+                            style="text-align: center; padding: 30px"
+                        >
+                            Aucune classe enregistrée.
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

@@ -1,45 +1,62 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{% block titre %}{% endblock %} - Gestion école</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css' ) }}"
+    />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{% block titre %}{% endblock  %} - Gestion école</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css' ) }}">
+  <body>
+    <div class="app">
+      <!-- Menu latéral -->
+      <aside class="sidebar">
+        <div class="brand">School<span>Manager</span></div>
+        <nav class="nav">
+          <a
+            href="{{ url_for('admin_route.admin_view') }}"
+            class="{% if page == 'home' %}active{% endif %}"
+          >
+            Tableau de bord
+          </a>
 
-</head>
+          <a
+            href="{{ url_for('academic_year.academic_year_view') }}"
+            class="{% if page == 'academic' %}active{% endif %}"
+          >
+            Année Scolaire
+          </a>
 
-<body>
-  <div class="app">
+          <a
+            href="{{ url_for('level_route.level_view') }}"
+            class="{% if page == 'level' %}active{% endif %}"
+          >
+            Niveau
+          </a>
 
-    <!-- Menu latéral -->
-    <aside class="sidebar">
-      <div class="brand">School<span>Manager</span></div>
-      <nav class="nav">
-        <a href="{{ url_for('admin_route.admin_view' ) }}" class="{% if page == 'home' %}active{% endif %}">Tableau de bord</a>
-        <a href="{{ url_for('academic_year.academic_year_view' ) }}" class="{% if page == 'academic' %}active{% endif %}">Annnée Scolaire</a>
-      </nav>
-    </aside>
+          <a
+            href="{{ url_for('school_class_route.school_class_view') }}"
+            class="{% if page == 'class' %}active{% endif %}"
+          >
+            Classe
+          </a>
+        </nav>
+      </aside>
 
-    <main class="main">
-      <header class="topbar">
-        <div>
-          <h1>{% block titre_header %}{% endblock  %}</h1>
-          <p>Vue d'ensemble de l'année scolaire en cours</p>
-        </div>
-        <div class="btn-group">
-          {% block btn %}
-            
-          {% endblock %}
-        </div>
-      </header>
+      <main class="main">
+        <header class="topbar">
+          <div>
+            <h1>{% block titre_header %}{% endblock %}</h1>
+            <p>Vue d'ensemble de l'année scolaire en cours</p>
+          </div>
+          <div class="btn-group">{% block btn %} {% endblock %}</div>
+        </header>
 
-      {% block content %}
-      {% endblock  %}
-
-      
-    </main>
-  </div>
-</body>
-
+        {% block content %} {% endblock %}
+      </main>
+    </div>
+  </body>
 </html>

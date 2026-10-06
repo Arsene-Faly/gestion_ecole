@@ -1,0 +1,111 @@
+{% extends "layouts/base.html" %}
+
+{% block titre %}Niveaux{% endblock %}
+
+{% block titre_header %}Niveaux{% endblock %}
+
+{% block content %}
+
+<section class="section">
+
+    <div class="card">
+
+        <div style="margin-bottom: 20px">
+
+            <h2 style="font-size: 1.1rem; margin-bottom: 5px">
+                Liste des niveaux
+            </h2>
+
+            <p style="color: #777; font-size: 0.9rem">
+                Gestion des niveaux scolaires
+            </p>
+
+            <a href="#" class="btn btn-secondary btn-sm">
+                Ajouter un niveau
+            </a>
+
+        </div>
+
+        <div class="cards">
+
+            {% for level in levels %}
+
+            <div class="card">
+
+                <h3>
+                    {{ level.name }}
+                </h3>
+
+                {% if level.description %}
+
+                    <p style="color: #777; margin-top: 8px">
+                        {{ level.description }}
+                    </p>
+
+                {% else %}
+
+                    <p style="color: #777; margin-top: 8px">
+                        Aucune description.
+                    </p>
+
+                {% endif %}
+
+                <p style="margin-top: 12px">
+
+                    <strong>
+                        {{ level.classes|length }}
+                    </strong>
+
+                    classe(s)
+
+                </p>
+
+                <div
+                    class="btn-group"
+                    style="margin-top: 16px"
+                >
+
+                    <a
+                        href="{{ url_for(
+                            'level_route.level_detail',
+                            id=level.id
+                        ) }}"
+                        class="btn btn-primary btn-sm"
+                    >
+                        Voir les classes
+                    </a>
+
+                    <a
+                        href="#"
+                        class="btn btn-secondary btn-sm"
+                    >
+                        Modifier
+                    </a>
+
+                </div>
+
+            </div>
+
+            {% else %}
+
+            <div class="card">
+
+                <h3>
+                    Aucun niveau
+                </h3>
+
+                <p style="color: #777">
+                    Aucun niveau scolaire n'est enregistré.
+                </p>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}
