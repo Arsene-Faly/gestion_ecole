@@ -1,0 +1,111 @@
+{% extends "layouts/base_user.html" %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block content %}
+
+<section class="hero">
+    <div class="container hero-content">
+
+        <div class="hero-text">
+            <span class="hero-badge">Gestion scolaire</span>
+
+            <h1>
+                Gérez votre établissement
+                <span>simplement et efficacement</span>
+            </h1>
+
+            <p>
+                Une plateforme simple pour gérer les élèves, les classes,
+                les enseignants et les différentes informations de votre école.
+            </p>
+
+            <div class="hero-actions">
+                <a href="{{ url_for('auth_route.login_view') }}" class="btn btn-primary">
+                    Se connecter
+                </a>
+
+                <a href="{{ url_for('auth_route.register_view') }}" class="btn btn-secondary">
+                    Créer un compte
+                </a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<section class="about">
+    <div class="container">
+
+        <div class="section-title">
+            <span>Notre plateforme</span>
+            <h2>Une gestion scolaire plus simple</h2>
+
+            <p>
+                Gestion École vous permet de centraliser les informations
+                importantes de votre établissement dans une seule application.
+            </p>
+        </div>
+
+        <div class="features">
+
+            <article class="feature-card">
+                <div class="feature-icon">01</div>
+
+                <h3>Gestion des élèves</h3>
+
+                <p>
+                    Gérez facilement les informations et les inscriptions
+                    de vos élèves.
+                </p>
+            </article>
+
+
+            <article class="feature-card">
+                <div class="feature-icon">02</div>
+
+                <h3>Gestion des classes</h3>
+
+                <p>
+                    Organisez les niveaux, les classes et les élèves
+                    de votre établissement.
+                </p>
+            </article>
+
+
+            <article class="feature-card">
+                <div class="feature-icon">03</div>
+
+                <h3>Gestion scolaire</h3>
+
+                <p>
+                    Centralisez les différentes informations nécessaires
+                    au fonctionnement de votre école.
+                </p>
+            </article>
+
+        </div>
+
+    </div>
+</section>
+
+
+<section class="cta">
+    <div class="container">
+
+        <h2>Prêt à commencer ?</h2>
+
+        <p>
+            Connectez-vous à votre espace pour accéder aux fonctionnalités
+            de gestion de votre établissement.
+        </p>
+
+        <a href="{{ url_for('auth_route.login_view') }}" class="btn btn-primary">
+            Accéder à mon espace
+        </a>
+
+    </div>
+</section>
+
+{% endblock %}

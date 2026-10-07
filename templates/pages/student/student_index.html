@@ -1,0 +1,147 @@
+{% extends "layouts/base.html" %}
+
+{% block titre %}Élèves{% endblock %}
+
+{% block titre_header %}Élèves{% endblock %}
+
+{% block content %}
+
+<section class="section">
+
+    <div class="card">
+
+        <div style="margin-bottom: 20px">
+
+            <h2 style="font-size: 1.1rem; margin-bottom: 5px">
+                Liste des élèves
+            </h2>
+
+            <p style="color: #777; font-size: 0.9rem">
+                Gestion des élèves scolaires
+            </p>
+
+            <a href="#" class="btn btn-secondary btn-sm">
+                Ajouter un élève
+            </a>
+
+        </div>
+
+        <div class="table-wrap">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>ID</th>
+                        <th>Nom</th>
+                        <th>Prénom</th>
+                        <th>Date de naissance</th>
+                        <th>Genre</th>
+                        <th>Téléphone</th>
+                        <th>Actions</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    {% for student in students %}
+
+                    <tr>
+
+                        <td>
+                            {{ loop.index }}
+                        </td>
+
+                        <td>
+                            <strong>
+                                {{ student.last_name }}
+                            </strong>
+                        </td>
+
+                        <td>
+                            {{ student.first_name }}
+                        </td>
+
+                        <td>
+                            {% if student.date_of_birth %}
+                                {{ student.date_of_birth }}
+                            {% else %}
+                                -
+                            {% endif %}
+                        </td>
+
+                        <td>
+                            {% if student.gender %}
+                                <span class="badge ok">
+                                    {{ student.gender }}
+                                </span>
+                            {% else %}
+                                <span class="badge danger">
+                                    Non renseigné
+                                </span>
+                            {% endif %}
+                        </td>
+
+                        <td>
+                            {% if student.phone %}
+                                {{ student.phone }}
+                            {% else %}
+                                -
+                            {% endif %}
+                        </td>
+
+                        <td class="actions">
+
+                            <a
+                                href="#"
+                                class="btn btn-secondary btn-sm"
+                            >
+                                Voir
+                            </a>
+
+                            <a
+                                href="#"
+                                class="btn btn-secondary btn-sm"
+                            >
+                                Modifier
+                            </a>
+
+                            <a
+                                href="#"
+                                class="btn btn-danger btn-sm"
+                            >
+                                Supprimer
+                            </a>
+
+                        </td>
+
+                    </tr>
+
+                    {% else %}
+
+                    <tr>
+
+                        <td
+                            colspan="7"
+                            style="text-align: center; padding: 30px"
+                        >
+                            Aucun élève enregistré.
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

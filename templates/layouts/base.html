@@ -43,6 +43,16 @@
           >
             Classe
           </a>
+
+          <a
+            href="{{ url_for('student_route.student_view') }}"
+            class="{% if page == 'student' %}active{% endif %}"
+          >
+            School
+          </a>
+
+          <!-- Déconnexion -->
+          <a href="{{ url_for('auth_route.logout_view') }}"> Déconnexion </a>
         </nav>
       </aside>
 

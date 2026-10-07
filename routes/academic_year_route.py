@@ -9,6 +9,7 @@ from flask import (
 from config import db
 from models.academic_year import AcademicYear
 
+from decorators import role_required, guest_required
 
 academic_year = Blueprint(
     "academic_year",
@@ -20,8 +21,8 @@ academic_year = Blueprint(
 # ==========================================
 # LISTE DES ANNÉES SCOLAIRES
 # ==========================================
-
 @academic_year.route("")
+# @role_required("admin")
 def academic_year_view():
 
     # Récupérer toutes les années scolaires
