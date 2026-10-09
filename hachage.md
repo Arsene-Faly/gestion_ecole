@@ -4,4 +4,4 @@ MonMotDePasse123
         ↓
      HASHAGE
         ↓
-scrypt:32768:8:1$...$...
+scrypt:32768:8:1$

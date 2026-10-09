@@ -10,6 +10,9 @@
 </head>
 
 <body>
+{{ session.get("user_id") }}
+{{ session.get("email") }}
+{{ session.get("role") }}
 
     <header class="header">
         <div class="container header-content">
@@ -28,7 +31,11 @@
                     </li>
 
                     {% if session.get("user_id") %}
-
+                        <li>
+                            <a href="{{ url_for('profile_route.profile_view') }}">
+                                {{ session.get("email") }}
+                            </a>
+                        </li>
                         <li>
                             <a href="{{ url_for('auth_route.logout_view') }}">
                                 Déconnexion

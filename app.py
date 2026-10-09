@@ -6,9 +6,9 @@ from config import Config, db
 from flask import Flask
 
 # models
-from models import AcademicYear, Level, SchoolClass, User, Student
+from models import AcademicYear, Level, SchoolClass, User, Student, UserProfile
 
-from routes import admin_route, academic_year, level_route, school_class_route, main_route, auth_route, student_route
+from routes import admin_route, academic_year, level_route, school_class_route, main_route, auth_route, student_route, profile_route
 
 app = Flask(__name__)
 
@@ -29,6 +29,7 @@ app.register_blueprint(school_class_route)
 app.register_blueprint(main_route)
 app.register_blueprint(auth_route)
 app.register_blueprint(student_route)
+app.register_blueprint(profile_route)
 
 # Si notre fichier est executer notre serveur marche
 if __name__ == "__main__":

@@ -24,3 +24,12 @@ class User(db.Model):
         nullable=False,
         default="user"
     )
+    
+    # Relation avec UserProfile
+    profile = db.relationship(
+        "UserProfile",
+        back_populates="user",
+        # Pas de Liste
+        uselist=False,
+        cascade="all, delete"
+    )

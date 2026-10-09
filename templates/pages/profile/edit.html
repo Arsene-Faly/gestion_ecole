@@ -1,0 +1,151 @@
+{% extends "layouts/base_user.html" %}
+
+{% block title %}Modifier mon profil{% endblock %}
+
+{% block content %}
+
+<div class="profile-container">
+    <div class="profile-card">
+
+        <div class="profile-banner"></div>
+
+        <div class="profile-body">
+
+            <h1 class="profile-name">
+                Modifier mon profil
+            </h1>
+
+            <p class="profile-email">
+                {{ user.email }}
+            </p>
+
+            <!-- Afficher les erreurs de validation -->
+            {% if errors %}
+                <div class="error-list">
+                    {% for error in errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            <!-- Formulaire de modification du profil -->
+            <form
+                method="POST"
+                enctype="multipart/form-data"
+                class="profile-form"
+            >
+
+                <!-- Photo de profil actuelle -->
+                <div class="form-group">
+                    <label>Photo de profil actuelle</label>
+
+                    <div class="photo-preview">
+                        {% if profile and profile.photo %}
+                            <img
+                                class="profile-photo"
+                                src="{{ url_for('static', filename='uploads/' ~ profile.photo) }}"
+                                alt="Photo de profil"
+                            >
+                        {% else %}
+                            <img
+                                class="profile-photo"
+                                src="{{ url_for('static', filename='uploads/default.png') }}"
+                                alt="Photo par défaut"
+                            >
+                        {% endif %}
+                    </div>
+                </div>
+
+                <!-- Choisir une nouvelle photo -->
+                <div class="form-group">
+                    <label for="photo">
+                        Nouvelle photo de profil
+                    </label>
+
+                    <input
+                        type="file"
+                        id="photo"
+                        name="photo"
+                        accept=".jpg,.jpeg,.png,.webp"
+                    >
+
+                    <small>
+                        Formats acceptés : JPG, JPEG, PNG et WEBP.
+                    </small>
+                </div>
+
+                <hr class="profile-divider">
+
+                <!-- Modifier le nom complet -->
+                <div class="form-group">
+                    <label for="name">
+                        Nom complet
+                    </label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        value="{{ name }}"
+                        placeholder="Entrez votre nom complet"
+                        required
+                    >
+                </div>
+
+                <!-- Modifier le téléphone -->
+                <div class="form-group">
+                    <label for="phone">
+                        Téléphone
+                    </label>
+
+                    <input
+                        type="text"
+                        id="phone"
+                        name="phone"
+                        value="{{ phone }}"
+                        placeholder="Entrez votre numéro de téléphone"
+                    >
+                </div>
+
+                <!-- Modifier l'adresse -->
+                <div class="form-group">
+                    <label for="address">
+                        Adresse
+                    </label>
+
+                    <input
+                        type="text"
+                        id="address"
+                        name="address"
+                        value="{{ address }}"
+                        placeholder="Entrez votre adresse"
+                    >
+                </div>
+
+                <!-- Boutons d'action -->
+                <div class="profile-actions">
+
+                    <button
+                        type="submit"
+                        class="btn-edit"
+                    >
+                        Enregistrer les modifications
+                    </button>
+
+                    <a
+                        href="{{ url_for('profile_route.profile_view') }}"
+                        class="btn-cancel"
+                    >
+                        Annuler
+                    </a>
+
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+

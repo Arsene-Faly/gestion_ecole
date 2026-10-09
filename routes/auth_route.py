@@ -13,7 +13,7 @@ from models.user import User
 
 from werkzeug.security import generate_password_hash, check_password_hash
 
-from decorators import role_required, guest_required
+from decorators import guest_required
 
 auth_route = Blueprint(
     "auth_route",
@@ -23,7 +23,7 @@ auth_route = Blueprint(
 
 
 @auth_route.route("/login", methods=["GET", "POST"])
-@guest_required
+@guest_required # connecté
 def login_view():
 
     errors = []

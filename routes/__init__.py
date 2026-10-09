@@ -5,3 +5,4 @@ from .academic_year_route import academic_year
 from .level_route import level_route
 from .school_class_route import school_class_route
 from .student_route import student_route
+from .profile_route import profile_route

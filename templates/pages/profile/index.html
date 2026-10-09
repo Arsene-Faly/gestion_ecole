@@ -1,0 +1,106 @@
+{% extends "layouts/base_user.html" %}
+
+{% block title %}Mon profil{% endblock %}
+
+{% block content %}
+
+<div class="profile-container">
+  <div class="profile-card">
+    <div class="profile-banner"></div>
+
+    <div class="profile-body">
+
+      <!-- Photo de profil -->
+      {% if user.profile and user.profile.photo %}
+        <img
+          class="profile-photo"
+          src="{{ url_for('static', filename='uploads/' ~ user.profile.photo) }}"
+          alt="Photo de profil"
+        >
+      {% else %}
+        <p class="profile-empty">
+          Vous n'avez pas encore de photo de profil.
+        </p>
+      {% endif %}
+
+      <!-- Nom de l'utilisateur -->
+      <h1 class="profile-name">
+        {% if user.profile %}
+          {{ user.profile.name }}
+        {% else %}
+          Mon profil
+        {% endif %}
+      </h1>
+
+      <p class="profile-email">{{ user.email }}</p>
+
+      <span class="profile-role">{{ user.role }}</span>
+
+      <hr class="profile-divider">
+
+      <h2 class="section-title">Informations personnelles</h2>
+
+      <!-- Informations du profil -->
+      {% if user.profile %}
+
+        <div class="profile-grid">
+
+          <div class="profile-item">
+            <span class="profile-label">Nom complet</span>
+            <span class="profile-value">
+              {{ user.profile.name }}
+            </span>
+          </div>
+
+          <div class="profile-item">
+            <span class="profile-label">Adresse e-mail</span>
+            <span class="profile-value">
+              {{ user.email }}
+            </span>
+          </div>
+
+          <div class="profile-item">
+            <span class="profile-label">Téléphone</span>
+            <span class="profile-value">
+              {{ user.profile.phone or 'Non renseigné' }}
+            </span>
+          </div>
+
+          <div class="profile-item">
+            <span class="profile-label">Adresse</span>
+            <span class="profile-value">
+              {{ user.profile.address or 'Non renseignée' }}
+            </span>
+          </div>
+
+        </div>
+
+      {% else %}
+
+        <div class="profile-empty">
+          <p>Vous n'avez pas encore de profil personnel.</p>
+          <p>Veuillez compléter vos informations.</p>
+        </div>
+
+      {% endif %}
+
+      <!-- Bouton toujours visible -->
+      <div class="profile-actions">
+        <a
+          href="{{ url_for('profile_route.profile_edit') }}"
+          class="btn-edit"
+        >
+          {% if user.profile %}
+            Modifier mon profil
+          {% else %}
+            Créer mon profil
+          {% endif %}
+        </a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
