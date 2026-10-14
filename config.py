@@ -3,6 +3,8 @@
 # pip install pymysql
 
 # Im porter SQLAlchemy pour gérer la base de données
+
+import os
 from flask_sqlalchemy import SQLAlchemy
 
 
@@ -23,7 +25,11 @@ DB_NAME = "my_ecole"
 class Config:
 
     # Clé secrète utilisée par Flask pour les sessions # et les messages flash 
-    SECRET_KEY = "1111111111111111111"
+    # Clé aleatoire longue
+    SECRET_KEY = os.environ.get(
+        "SECRET_KEY",
+        "cle-secrete-temporaire-a-remplacer"
+    )
     # Adresse de connexion à la base de données MySQL
     #
     # mysql+pymysql:// signifie :

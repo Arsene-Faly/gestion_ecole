@@ -36,8 +36,9 @@ profile_route = Blueprint(
 def profile_view():
 
     # Récupérer l'utilisateur connecté grâce à la session
+    # id = session.get("user_id")
     user = User.query.get(session.get("user_id"))
-
+    
     # Vérifier si l'utilisateur existe
     if user is None:
         flash("Utilisateur introuvable.", "error")
